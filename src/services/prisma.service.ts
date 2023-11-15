@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-let prismaClient: ReturnType<typeof PrismaClient> | undefined
+let prismaClient: any;
 
 export const prisma = () => {
     if(!prisma){
