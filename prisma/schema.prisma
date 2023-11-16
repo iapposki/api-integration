@@ -6,6 +6,41 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./sqlite.db"
+}
+
+model ProductID {
+  id        Int @id @default(autoincrement())
+  productID Int @unique
+}
+
+model RawData {
+  id              Int    @id @default(autoincrement())
+  productId       Int   
+  startDate       String
+  startTime       String
+  endTime         String
+  providerSlotId  String @unique
+  remaining       Int
+  currencyCode    String
+  variantId       Int
+  paxAvailability Pax[]
+}
+
+model Pax {
+  id            Int      @id @default(autoincrement())
+  max           Int
+  min           Int
+  remaining     Int
+  type          String
+  isPrimary     Boolean?
+  description   String
+  name          String
+  discount      Float
+  finalPrice    Float
+  originalPrice Float
+  currencyCode  String
+  rawData       RawData? @relation(fields: [aPIdataId], references: [id])
+  aPIdataId     Int?
 }
