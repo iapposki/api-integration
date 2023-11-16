@@ -15,7 +15,7 @@ model ProductID {
   productID Int @unique
 }
 
-model APIdata {
+model RawData {
   id              Int    @id @default(autoincrement())
   startDate       String
   startTime       String
@@ -33,13 +33,13 @@ model Pax {
   min           Int
   remaining     Int
   type          String
-  isPrimary     Boolean
+  isPrimary     Boolean?
   description   String
   name          String
   discount      Float
   finalPrice    Float
   originalPrice Float
   currencyCode  String
-  APIdata       APIdata? @relation(fields: [aPIdataId], references: [id])
+  rawData       RawData? @relation(fields: [aPIdataId], references: [id])
   aPIdataId     Int?
 }
