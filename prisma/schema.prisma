@@ -17,6 +17,7 @@ model ProductID {
 
 model RawData {
   id              Int    @id @default(autoincrement())
+  productId       Int   
   startDate       String
   startTime       String
   endTime         String
