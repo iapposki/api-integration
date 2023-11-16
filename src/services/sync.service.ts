@@ -5,7 +5,7 @@ export const syncService = async (days: number) => {
     const products = await prisma.productID.findMany({})
     const headers = {
         "Content-Type": "application/json",
-        'x-api-key': '4c4f495a078d85aa22872c2b8a1c9cc4'
+        'x-api-key': process.env['API_KEY']
     }
     for (let i = 0; i < products.length; i++) {
         var date = new Date()
