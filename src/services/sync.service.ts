@@ -87,6 +87,6 @@ export const syncService = async (daysToSync: number) => {
 
 
 function timer(v:number){
-    // console.log(v)
     return new Promise(r=>setTimeout(r,v));
 }
+
