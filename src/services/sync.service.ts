@@ -12,7 +12,6 @@ export const syncService = async (daysToSync: number) => {
         var param = date.toISOString().split('T')[0]
         let id = String(products[i].productID)
         let availability = products[i].availability
-        console.log('daysToSync :::: ' + daysToSync)
         for (let j = 0; j < daysToSync; j++) {
             let day: any = new Date(param)
             day = day.getDay()
