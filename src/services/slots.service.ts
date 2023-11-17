@@ -20,6 +20,5 @@ export const slotsService = async (id: string, date: string) => {
         }
     }
 
-    // console.info(res)
     return res
 }
