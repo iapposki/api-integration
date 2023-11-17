@@ -1,4 +1,4 @@
-import prisma from "../src/services/prisma.service"
+import prisma from "../services/prisma.service"
 
 const main = async () => {
     await prisma.productID.create({
