@@ -11,4 +11,4 @@ Slots endpoint : `https://api-integration-wg09.onrender.com/api/v1/experience/<p
 Dates endpoint : `https://api-integration-wg09.onrender.com/api/v1/experience/<productID>/dates/`
 
 
-`<productID>` is either 14 or 15. Dates are valid for the next 60 days
+`<productID>` is either 14 or 15. Dates are valid for the next 60 days.
