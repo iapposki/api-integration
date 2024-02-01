@@ -6,13 +6,15 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./sqlite.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
+
 
 model ProductID {
   id        Int @id @default(autoincrement())
   productID Int @unique
+  availability  Int[]
 }
 
 model RawData {
@@ -21,7 +23,7 @@ model RawData {
   startDate       String
   startTime       String
   endTime         String
-  providerSlotId  String @unique
+  providerSlotId  String  @unique
   remaining       Int
   currencyCode    String
   variantId       Int
