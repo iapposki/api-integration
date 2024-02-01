@@ -11,7 +11,35 @@ datasource db {
 }
 
 model ProductID {
-  id  Int @id @default(autoincrement())
+  id        Int @id @default(autoincrement())
   productID Int @unique
 }
 
+model APIdata {
+  id              Int    @id @default(autoincrement())
+  startDate       String
+  startTime       String
+  endTime         String
+  providerSlotId  String @unique
+  remaining       Int
+  currencyCode    String
+  variantId       Int
+  paxAvailability Pax[]
+}
+
+model Pax {
+  id            Int      @id @default(autoincrement())
+  max           Int
+  min           Int
+  remaining     Int
+  type          String
+  isPrimary     Boolean
+  description   String
+  name          String
+  discount      Float
+  finalPrice    Float
+  originalPrice Float
+  currencyCode  String
+  APIdata       APIdata? @relation(fields: [aPIdataId], references: [id])
+  aPIdataId     Int?
+}
