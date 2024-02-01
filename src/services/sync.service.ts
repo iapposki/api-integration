@@ -1,7 +1,7 @@
 import prisma from "./prisma.service";
 import axios from 'axios'
 
-export const syncService = async (days: number) => {
+export const syncService = async (daysToSync: number) => {
     const products = await prisma.productID.findMany({})
     const headers = {
         "Content-Type": "application/json",
@@ -12,7 +12,8 @@ export const syncService = async (days: number) => {
         var param = date.toISOString().split('T')[0]
         let id = String(products[i].productID)
         let availability = products[i].availability
-        for (let j = 0; j < days; j++) {
+        console.log('daysToSync :::: ' + daysToSync)
+        for (let j = 0; j < daysToSync; j++) {
             let day: any = new Date(param)
             day = day.getDay()
             if (availability.includes(day)) {    
@@ -90,23 +91,3 @@ function timer(v:number){
     // console.log(v)
     return new Promise(r=>setTimeout(r,v));
 }
-
-
-const main = async () => {
-    await prisma.productID.create({
-                data: {
-                            productID: 14,
-                            availability: [0,2,4,6]
-                        }
-                    })
-    await prisma.productID.create({
-            data: {
-                        productID: 15,
-                        availability: [0]
-                    }
-                })
-}   
-
-// main()
-
-syncService(60)
