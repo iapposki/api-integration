@@ -34,14 +34,14 @@ if (require.main === module) {
         console.log('Fetching availability for today.')
         syncService(1)
     })
-    // cron.schedule('3 */4 * * *', () => {
-    //     console.log('Fetching availability for next 7 days.')
-    //     syncService(7)
-    // })
-    // cron.schedule('6 0 * * *', () => {
-    //     console.log('Fetching availability for next 30 days.')
-    //     syncService(30)
-    // }) 
+    cron.schedule('3 */4 * * *', () => {
+        console.log('Fetching availability for next 7 days.')
+        syncService(7)
+    })
+    cron.schedule('6 0 * * *', () => {
+        console.log('Fetching availability for next 30 days.')
+        syncService(30)
+    }) 
 }
 
 export default app;
